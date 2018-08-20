@@ -53,6 +53,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
         pooling = 'avg'
 
     if network == 'DenseNet201':
+        from keras.applications.densenet import preprocess_input
         img_width, img_height = 224, 224
         base_model = applications.DenseNet201(include_top=include_top, weights=weights, pooling=pooling)
         # train last Dense Block
@@ -64,10 +65,12 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
                 layer.trainable = trainable
 
     if network == 'Xception':
+        from keras.applications.xception import preprocess_input
         img_width, img_height = 299, 299
         base_model = applications.Xception(include_top=include_top, weights=weights, pooling=pooling)
 
     if network == 'InceptionV3':
+        from keras.applications.inception_v3 import preprocess_input
         img_width, img_height = 299, 299
         base_model = applications.InceptionV3(include_top=include_top, weights=weights, pooling=pooling)
         # train top 2 inception blocks
@@ -79,6 +82,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
                layer.trainable = True
 
     if network == 'InceptionResNetV2':
+        from keras.applications.inception_resnet_v2 import preprocess_input
         img_width, img_height = 299, 299
         base_model = applications.InceptionResNetV2(include_top=include_top, weights=weights, pooling=pooling)
         # train top 2 inception blocks
@@ -90,10 +94,12 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
                 layer.trainable = trainable
 
     if network == 'NASNet':
+        from keras.applications.nasnet import preprocess_input
         img_width, img_height = 331, 331
         base_model = applications.NASNetLarge(include_top=include_top, weights=weights, pooling=pooling)
 
     if network == 'MoblieNetV2':
+        from keras.applications.mobilenetv2 import preprocess_input
         img_width, img_height = 224, 224
         base_model = applications.MobileNetV2(include_top=include_top, weights=weights, pooling=pooling)
    
@@ -124,7 +130,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
     if data_augmentation:
         # Initialize the train and test generators with data Augumentation 
         train_datagen = ImageDataGenerator(
-            rescale=1./255,
+            preprocessing_function=preprocess_input,
             horizontal_flip=True,
             fill_mode="nearest",
             zoom_range=0.3,
@@ -132,7 +138,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
             height_shift_range=0.3,
             rotation_range=30)
         val_datagen = ImageDataGenerator(
-            rescale=1./255,
+            preprocessing_function=preprocess_input,
             horizontal_flip=True,
             fill_mode="nearest",
             zoom_range=0.3,
@@ -141,8 +147,8 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
             rotation_range=30)
 
     else:
-        train_datagen = ImageDataGenerator(rescale=1./255)
-        val_datagen = ImageDataGenerator(rescale=1./255)
+        train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+        val_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
     train_generator = train_datagen.flow_from_directory(
         train_path,
@@ -172,7 +178,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
     model.evaluate_generator(test_generator)
 
 if __name__ == '__main__':
-    train_path = 'train'
-    val_path = "val"
-    test_path = "test"
-    train(train_path, val_path, test_path)
+    train_path = '../train_data/train'
+    val_path = "../train_data/val"
+    test_path = "../train_data/test"
+    train(train_path, val_path, test_path, batch_size=24)
