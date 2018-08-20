@@ -8,7 +8,9 @@ Generic image classification for custom dataset with various models, implemented
 
 ## Preprocess
 **No need to change the resolution of the images**
+
 **Automatic data augmenatation is implemented in this library**
+
 Split custom dataset into following structure
 * train
   * class1
@@ -22,40 +24,52 @@ Split custom dataset into following structure
 
 ## Available Models
 ### InceptionV3
-**retrain** mode: Randomly initialize all layers and retrain the whole model
-**finetune** mode: Train last 2 inception blocks
-**transfer** mode: Train only fully connected layer(s)
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
+**finetune** mode: Train last 2 inception blocks.
+
+**transfer** mode: Train only fully connected layer(s).
 
 ### InceptionResNetV2
-**retrain** mode: Randomly initialize all layers and retrain the whole model
-**finetune** mode: Train last 2 inception blocks
-**transfer** mode: Train only fully connected layer(s)
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
+**finetune** mode: Train last 2 inception blocks.
+
+**transfer** mode: Train only fully connected layer(s).
 
 ### DenseNet201
-**retrain** mode: Randomly initialize all layers and retrain the whole model
-**finetune** mode: Train last Dense blocks
-**transfer** mode: Train only fully connected layer(s)
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
+**finetune** mode: Train last Dense blocks.
+
+**transfer** mode: Train only fully connected layer(s).
 
 ### NASNet-Large
-**retrain** mode: Randomly initialize all layers and retrain the whole model
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
 finetune mode: **TODO**
-**transfer** mode: Train only fully connected layer(s)
+
+**transfer** mode: Train only fully connected layer(s).
 
 ### Xception
-**retrain** mode: Randomly initialize all layers and retrain the whole model
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
 finetune mode: **TODO**
-**transfer** mode: Train only fully connected layer(s)
+
+**transfer** mode: Train only fully connected layer(s).
 
 ### MobileNetV2
-**retrain** mode: Randomly initialize all layers and retrain the whole model
+**retrain** mode: Randomly initialize all layers and retrain the whole model.
+
 finetune mode: **TODO**
-**transfer** mode: Train only fully connected layer(s)
+
+**transfer** mode: Train only fully connected layer(s).
 
 ## Hyper-parameters
 ### Default
-* batch size: 32
-* epoch: 50
-* fc layer: 1
-* data augmentation: False
-* optimizer: 'Adadelta'
+* batch size: **32**
+* epoch: **50**
+* fc layer: **1**
+* data augmentation: **False**
+* optimizer: **'Adadelta'**
 
