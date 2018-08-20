@@ -23,14 +23,7 @@ Split custom dataset into following structure
   * class2
 
 ## Available Models
-### InceptionV3
-* **retrain** mode: Randomly initialize all layers and retrain the whole model.
-
-* **finetune** mode: Train last 2 inception blocks.
-
-* **transfer** mode: Train only fully connected layer(s).
-
-### InceptionResNetV2
+### InceptionV3, InceptionResNetV2
 * **retrain** mode: Randomly initialize all layers and retrain the whole model.
 
 * **finetune** mode: Train last 2 inception blocks.
@@ -44,21 +37,7 @@ Split custom dataset into following structure
 
 * **transfer** mode: Train only fully connected layer(s).
 
-### NASNet-Large
-* **retrain** mode: Randomly initialize all layers and retrain the whole model.
-
-* finetune mode: **TODO**
-
-* **transfer** mode: Train only fully connected layer(s).
-
-### Xception
-* **retrain** mode: Randomly initialize all layers and retrain the whole model.
-
-* finetune mode: **TODO**
-
-* **transfer** mode: Train only fully connected layer(s).
-
-### MobileNetV2
+### NASNet-Large, Xception, MobileNetV2
 * **retrain** mode: Randomly initialize all layers and retrain the whole model.
 
 * finetune mode: **TODO**
