@@ -1,5 +1,6 @@
 # Generic-image-classfication
 Generic image classification for custom dataset with various models, implemented by Keras
+Multi-gpu is supported.
 
 ## Requirments
 * Python 3.5 or 3.6
@@ -37,12 +38,15 @@ Split custom dataset into following structure
 
 * **transfer** mode: Train only fully connected layer(s).
 
-### NASNet-Large, Xception, MobileNetV2
+### ResNet50, Xception, MobileNetV2
 * **retrain** mode: Randomly initialize all layers and retrain the whole model.
 
 * finetune mode: **TODO**
 
 * **transfer** mode: Train only fully connected layer(s).
+
+### NASNet-Large
+**There is an official bug about layer numbers.**
 
 ## Hyper-parameters
 ### Default
@@ -51,4 +55,4 @@ Split custom dataset into following structure
 * fc layer: **1**
 * data augmentation: **False**
 * optimizer: **'Adadelta'**
-
+* gpu: **1**
