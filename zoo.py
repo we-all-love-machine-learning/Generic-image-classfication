@@ -106,6 +106,7 @@ def train(train_path, val_path, test_path, batch_size=32, epochs=50, network='In
     bottleneck = base_model.output
     if fc == 2:
         bottleneck = Dense(512, activation='relu')(bottleneck)
+        bottleneck = Dropout(0.8)(bottleneck)
     predictions = Dense(classes, activation='softmax')(bottleneck)
     model = Model(inputs=base_model.input, outputs=predictions)
     
